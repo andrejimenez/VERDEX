@@ -1,0 +1,31 @@
+$(document).ready(function(){
+	// Acción del registro
+	$("#submitIngrediente").on("click", function(){
+         var jsonObject = {
+            "ingrediente" : $("#ingredienteSeleccionado").html(),
+            "cantidad" : $("#cantidadIngrediente").val()
+
+   };
+    if($("#cantidadIngrediente").val() == 0) {
+            alert("Error: Llena el campo de cantidad");
+        }
+        else{
+            $.ajax({
+                type: "POST",
+                url: "data/ordenesUserService.php",
+                data : jsonObject, 
+                dataType : "json",
+                contentType : "application/x-www-form-urlencoded",
+                success: function(jsonData) {
+                    window.location.replace("agregarOrdenUser.html");  
+                       
+                },
+                error: function(errorMsg){  
+                    alert("error");
+                }
+            });
+        }
+    });    
+});
+
+

@@ -1,0 +1,116 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERDEX</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/flexslider.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<!-- Header Section -->
+<section class="tophead" role="tophead"> 
+  <!-- Navigation Section -->
+  <header id="header">
+    <div class="header-content clearfix"> <a class="logo" href="restaurantes.html">Regresar</a>
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+          <li><a onClick="usuarioMod('restaurante')">Enviar orden</a></li>
+          <li><a onClick="usuarioMod2('restaurante')">Ver historial</a></li>
+          <li><a id="borrarRestaurante" class="borrarRestaurante">Borrar Restaurante</a></li>
+          <li><a><input type="button" class="cerrarSesion" value="Cerrar sesion"></a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>
+</section>
+  <!-- Navigation Section --> 
+
+<!-- Service Section -->
+<section id="services" class="section services">
+  <div class="container-fluid">
+      <div class="row">
+      <div id="contenedorAux" class="col-md-6 col-md-offset-3">
+       <div id="profileContain">
+        <table  id="profileDataUserHistoric" class="table" width="100%">
+           
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Service Section --> 
+<h2 id ="testimonials">¿Como funciona esta pagina?</h2>
+<section id="testimonials" class="section testimonials no-padding">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="flexslider">
+        <ul class="slides">
+          <li>
+            <div class="col-md-12">
+              <blockquote>
+                <h1>Aqui realizaras tu pedido de hoy en tres sencillos pasos:</h1>
+                <h1>1.- Escribe el nombre del producto en la barra.</h1>
+                <h1>2.- Haz click en el recuadro del producto que quieras ordenar.</h1>
+                <h1>3.- Escribe la cantidad necesitada de dicho producto y haz click en enviar.</h1>
+                <h1>NOTA: Si deseas ver que productos has pedido, ve a historial de pedidos.</h1>
+                <p>PAGINA AGREGAR ORDEN</p>
+              </blockquote>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer section -->
+<footer id="contact" class="footer">
+  <div class="container-fluid">
+    <div class="col-sm-6 col-sm-offset-5">
+      <p>© 2017 All rights reserved. VERDEX<br>
+    </div>
+  </div>
+</footer>
+<!-- footer section --> 
+
+<!-- JS FILES --> 
+<script>
+    function usuarioMod(tipoContacto){
+
+      var nombreID = window.location.hash.substring(1);
+      
+        window.location.href = 'mandarOrden.html' + '#' + nombreID;
+      }  
+  </script> 
+   <script>
+    function usuarioMod2(tipoContacto){
+
+      var nombreID = window.location.hash.substring(1);
+      
+        window.location.href = 'historialAdmin.html' + '#' + nombreID;
+      }  
+  </script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flexslider-min.js"></script> 
+<script src="js/retina.min.js"></script> 
+<script src="js/modernizr.js"></script> 
+<script src="js/main.js"></script>
+<script type="text/javascript" src="js/sessionScript.js"></script>
+<script type="text/javascript" src="js/logoutScript.js"></script>
+<script type="text/javascript" src="js/usersDatosScript.js"></script>
+</body>
+</html>

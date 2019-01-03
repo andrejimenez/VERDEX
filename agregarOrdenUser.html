@@ -1,0 +1,150 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERDEX</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/flexslider.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<!-- Header Section -->
+<section class="tophead" role="tophead"> 
+  <!-- Navigation Section -->
+  <header id="header">
+    <div class="header-content clearfix"> <a  id="btnRegresar" class="logo" href="userHome.html">Ir a Inicio</a>
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+           <li><a href="datosTotalesUser.html">Historial de pedidos</a></li>
+          <li><a><input type="button" class="cerrarSesion" value="Cerrar sesion"></a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>
+</section>
+  <!-- Navigation Section --> 
+
+<!-- Service Section -->
+<section id="services" class="section services">
+  <div class="container-fluid">
+      <div class="row">
+      <div id="contenedorAux" class="col-md-6 col-md-offset-3">
+       <div id="profileContain">
+        <h2 id= "title">Agrega productos a tu orden de hoy</h2>
+        <div id="prospectosForm" style="text-align: center;">
+      <input type='text' class="search" id='search' placeholder="Ingresa aqui el nombre del producto" style="width: 50%; text-align: center;"> 
+      <div id='result'></div> 
+      </div>
+
+  <div id="simpleModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h2>Ingresa los datos de tu ingrediente</h2>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <h2 id="ingredienteSeleccionado"></h2>
+        <h3 id="infoIngrediente"></h3>
+        <input id="cantidadIngrediente" type="text" class="infoIngrediente" placeholder="Cantidad" style="text-align: center;">
+        <input id="submitIngrediente" type="button" class="btn-infoIngrediente btn btn-login" value="Enviar">
+        <input id="cancelIngrediente" type="button" class="btn-infoIngrediente btn btn-cancel closeBtn" value="Cancelar">
+        
+      </div>
+    </div>
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Service Section --> 
+<h2 id ="testimonials">¿Como funciona esta pagina?</h2>
+<section id="testimonials" class="section testimonials no-padding">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="flexslider">
+        <ul class="slides">
+          <li>
+            <div class="col-md-12">
+              <blockquote>
+                <h1>Aqui realizaras tu pedido de hoy en tres sencillos pasos:</h1>
+                <h1>1.- Escribe el nombre del producto en la barra.</h1>
+                <h1>2.- Haz click en el recuadro del producto que quieras ordenar.</h1>
+                <h1>3.- Escribe la cantidad necesitada de dicho producto y haz click en enviar.</h1>
+                <h1>NOTA: Si deseas ver que productos has pedido, ve a historial de pedidos.</h1>
+                <p>PAGINA AGREGAR ORDEN</p>
+              </blockquote>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer section -->
+<footer id="contact" class="footer">
+  <div class="container-fluid">
+    <div class="col-sm-6 col-sm-offset-5">
+      <p>© 2017 All rights reserved. VERDEX<br>
+    </div>
+  </div>
+</footer>
+<!-- footer section --> 
+
+<!-- JS FILES --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flexslider-min.js"></script> 
+<script src="js/retina.min.js"></script> 
+<script src="js/modernizr.js"></script> 
+<script src="js/main.js"></script>
+<script type="text/javascript" src="js/sessionScript.js"></script>
+<script type="text/javascript" src="js/logoutScript.js"></script>
+<script type="text/javascript" src="js/ordenesScriptUser.js"></script>
+<script type="text/javascript" src="js/agregarIngredientes.js"></script>
+ <script> 
+      $('document').ready(function(){ 
+        $('#search').on('input',function(){ 
+          $search=$(this).val(); 
+          $.get('data/agregarIngredienteUser.php',{search:$search},function($result){ 
+            $('#result').html($result); 
+          }) 
+        }) 
+      }); 
+      </script>
+<script type="text/javascript">
+  var modal = document.getElementById('simpleModal');
+  var modalBtn = document.getElementById('modalBtn');
+  var closeBtn = document.getElementsByClassName('closeBtn')[0];
+  closeBtn.addEventListener('click', closeModal);
+  // Listen for outside click
+  window.addEventListener('click', outsideClick);
+  function openModal(nombre, unidad){
+    $("#ingredienteSeleccionado").empty();
+    $("#infoIngrediente").empty();
+    $("#ingredienteSeleccionado").append(nombre);
+    $("#infoIngrediente").append("Este producto se vende en ", unidad);
+    modal.style.display = 'block';
+  }
+  function closeModal(){
+    modal.style.display = 'none';
+  }
+  function outsideClick(e){
+    if(e.target == modal){
+      modal.style.display = 'none';
+    }
+  }
+</script>
+</body>
+</html>

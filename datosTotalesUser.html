@@ -1,0 +1,130 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VERDEX</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/flexslider.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/animate.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<!-- Header Section -->
+<section class="tophead" role="tophead"> 
+  <!-- Navigation Section -->
+  <header id="header">
+    <div class="header-content clearfix"> <a id="btnRegresar" class="logo" href="userHome.html">Ir a Inicio</a>
+      <nav class="navigation" role="navigation">
+        <ul class="primary-nav">
+          <li><a href="agregarOrdenUser.html">Agregar a orden</a></li>
+          <li><a id="excelButton" onclick="fnExcelReport();">Exportar</a></li>
+          <li><a><input type="button" class="cerrarSesion" value="Cerrar sesion"></a></li>
+        </ul>
+      </nav>
+      <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+  </header>
+</section>
+  <!-- Navigation Section --> 
+
+<!-- Service Section -->
+<section id="services" class="section services">
+  <div class="container-fluid">
+      <div class="row">
+      <div id="contenedorAux" class="col-md-6 col-md-offset-3">
+       <div id="profileContain">
+        <table  id="profileDataUserHistoric" class="table" width="100%">
+           
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Service Section --> 
+<h2 id ="testimonials">¿Que es esta pagina?</h2>
+<section id="testimonials" class="section testimonials no-padding">
+  <div class="container-fluid">
+    <div class="row no-gutter">
+      <div class="flexslider">
+        <ul class="slides">
+         <li>
+            <div class="col-md-12">
+              <blockquote>
+                <h1>Aqui podras observar tu historial de pedidos acomodados por dia, te ayudamos a que lleves el control de tus pedidos.</h1>
+                <p>PAGINA HISTORIAL DE ORDENES</p>
+              </blockquote>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer section -->
+<footer id="contact" class="footer">
+  <div class="container-fluid">
+    <div class="col-sm-6 col-sm-offset-5">
+      <p>© 2017 All rights reserved. VERDEX<br>
+    </div>
+  </div>
+</footer>
+<!-- footer section --> 
+
+<!-- JS FILES --> 
+<script>
+            function fnExcelReport()
+            {
+                var tab_text="<table border='2px'>";
+                var textRange; var j=0;
+                tab = document.getElementById('profileDataUserHistoric'); // id of table
+
+                for(j = 0 ; j < tab.rows.length ; j++) 
+                {     
+                    tab_text=tab_text+tab.rows[j].innerHTML+"</tr>";
+                    //tab_text=tab_text+"</tr>";
+                }
+
+                tab_text=tab_text+"</table>";
+                tab_text= tab_text.replace(/<A[^>]*>|<\/A>/g, "");//remove if u want links in your table
+                tab_text= tab_text.replace(/<img[^>]*>/gi,""); // remove if u want images in your table
+                tab_text= tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
+
+                var ua = window.navigator.userAgent;
+                var msie = ua.indexOf("MSIE "); 
+
+                if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+                {
+                    txtArea1.document.open("txt/html","replace");
+                    txtArea1.document.write(tab_text);
+                    txtArea1.document.close();
+                    txtArea1.focus(); 
+                    sa=txtArea1.document.execCommand("SaveAs",true,"Say Thanks to Sumit.xls");
+                }  
+                else                 //other browser not tested on IE 11
+                    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));  
+
+                return (sa);
+            }
+        </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flexslider-min.js"></script> 
+<script src="js/retina.min.js"></script> 
+<script src="js/modernizr.js"></script> 
+<script src="js/main.js"></script>
+<script type="text/javascript" src="js/sessionScript.js"></script>
+<script type="text/javascript" src="js/logoutScript.js"></script>
+<script type="text/javascript" src="js/datosTotalesScript.js"></script>
+</body>
+</html>
